@@ -1,12 +1,19 @@
+import abstractfactory.*;
+import factorymethod.LaptopFactory;
+import laptopfactory.products.Laptop;
+
 public class Main {
     public static void main(String[] args) {
-        CarDirector director = new CarDirector();
-        CarBuilder builder = new SportsCarBuilder();
+        System.out.print("Factory Method: ");
+        LaptopFactory.createLaptop("hp").showDetails();
+        LaptopFactory.createLaptop("apple").showDetails();
+        LaptopFactory.createLaptop("dell").showDetails();
+        LaptopFactory.createLaptop("lenovo").showDetails();
 
-        Car sportsCar = director.constructSportsCar(builder);
-        Car familyCar = director.constructFamilyCar(new SportsCarBuilder());
-
-        System.out.println(sportsCar);
-        System.out.println(familyCar);
+        new AppleFactory().createBusinessLaptop().showDetails();
+        new AppleFactory().createGamingLaptop().showDetails();
+        new DellFactory().createGamingLaptop().showDetails();
+        new LenovoFactory().createBusinessLaptop().showDetails();
+        new LenovoFactory().createGamingLaptop().showDetails();
     }
 }
